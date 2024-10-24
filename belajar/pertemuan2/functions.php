@@ -17,4 +17,21 @@ function query($query) {
 }
 return $rows;
 }
+function tambah($data) 
+{
+  $conn = koneksi();
+  $nama = htmlspecialchars($data['nama']);
+  $nip = htmlspecialchars($data['nip']);
+  $email = htmlspecialchars($data['email']);
+  $jurusan = htmlspecialchars($data['jurusan']);
+  $gambar = htmlspecialchars($data['gambar']);
+  $query = "INSERT INTO
+              mahasiswa
+            VALUES
+            (null, '$nama', '$nip', '$email', '$jurusan', '$gambar');
+        ";
+  mysqli_query($conn, $query);
+  echo mysqli_error($conn);
+  return mysqli_affected_rows($conn);
+}
 ?>
